@@ -1,7 +1,6 @@
 FROM ezkrg/buildx
 
 ENV DOCKERVERSION "18.09.7"
-ENV DOCKER_HOST "tcp://docker:2375"
 
 RUN apk update
 RUN apk add bash curl build-base git gnupg bash docker-compose
@@ -15,4 +14,5 @@ RUN rm docker-${DOCKERVERSION}.tgz
 RUN git clone --branch stable --depth 1 https://github.com/StackExchange/blackbox.git "/.blackbox"
 ENV PATH "/.blackbox/bin:${PATH}"
 
+ENV DOCKER_HOST "tcp://ourskyci__docker:2375"
 ENV DOCKER_CLI_EXPERIMENTAL "enabled"
